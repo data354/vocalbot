@@ -1,91 +1,225 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - salut
+      - bonjour
+      - hey
+      - hello
+      - hi
+      - slt
+      - lu
+      - bjr
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: aurevoir
+    examples: |
+      - au revoir
+      - by
+      - à plus
+      - à la prochaine
+      - Bye
+      - goodbye
+      - à bientôt
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - Oui
+      - y
+      - o
+      - bien sur
+      - bien sûr
+      - Ça me va
+      - exactement
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - non
+      - n
+      - Je ne veux pas
+      - Jamais
+      - non, merci
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: bot_challenge
+    examples: |
+      - es tu un robot?
+      - es tu un bot?
+      - es tu un humain?
+      - humain ou robot?
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: faq/apropos_de_djamo
+    examples: |
+      - Qu'est ce que djamo?
+      - Djamo là c'est quoi?
+      - Parle moi de Djamo
+      - c'est quoi Djamo
+  # FAQ
+  - intent: faq/commencer_ouvrir_un_compte_djamo
+    examples: |
+      - Comment ouvrir un compte ?
+      - Comment ouvrir un compte Djamo ?
+      - Je veux ouvrir un compte
+      - Je veux ouvrir un compte Djamo 
+      - Je veux ouvrir un compte Djamo, comment faire ?
+      - Je veux ouvrir un compte Djamo pour ma soeur
+      - Je veux ouvrir un compte Djamo pour mon frère
+      - Je veux ouvrir un compte Djamo pour un ami
+      - Je veux ouvrir mon compte Djamo
+      - ouvrir un compte
+      - ouvrir un compte Djamo 
+      - ouvrir un compte Djamo, comment faire ?
+      - ouvrir un compte Djamo pour ma soeur
+      - ouvrir un compte Djamo pour mon frère
+      - ouvrir un compte Djamo pour un ami
+      - ouvrir mon compte Djamo
+      - Comment faire pour ouvrir un compte ?
+      - Comment faire pour avoir un compte Djamo ?
+      - Comment faire pour avoir un compte ?
+      - Comment faire pour avoir un compte Djamo ?
+      - Je veux avoir un compte
+      - Je veux un compte
+      - Faire un compte
+      - Créer un compte 
+      - Avoir un compte
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: faq/reception_de_la_carte
+    examples: |
+      - Comment avoir la carte djamo ?
+      - Comment avoir ma carte djamo ?
+      - Où est ce que la carte sera livré
+      - comment récupérer sa carte après une commande?
+      - récupérer sa carte après une commande
+
+  - intent: faq/creer_mon_code_de_securite_djamo
+    examples: |
+      - Comment créer mon code de sécurité?
+      - Comment créer mon code de sécurité djamo ?
+
+  - intent: faq/confirmer_mon_adresse_email
+    examples: |
+      - Comment puis-je confirmer mon adresse mail ?
+      - Comment confirmer mon adresse mail ?
+      - confirmation de mon adresse mail
+
+  - intent: faq/delai_activation_de_mon_compte_djamo
+    examples: |
+      - Quel est le délai d'activation de mon compte Djamo?
+      - le délai d'activation de mon compte Djamo
+      - Quand pourrais-je utiliser mon compte ?
+      - Le compte sera disponible à partir de quand?
+      - À quel moment pourrais-je utiliser mon compte?
+      - Jusqu'à quand le compte sera disponible?
+
+  - intent: faq/recharger_sa_carte_via_virement_bancaire
+    examples: |
+      - Comment recharger sa carte via virement bancaire?
+      - Je veux recharger ma carte via virement bancaire
+      - recharger ma carte à partir de mon compte bancaire
+      - utiliser mon compte bancaire pour recharger mon compte Djamo
+
+  - intent: faq/ajouter_numero_rechargement_mobile_money
+    examples: |
+      - Comment ajouter un numéro de rechargement Mobile Money?
+      - Ajouter un numéro mobile money
+
+  - intent: faq/tarifs_du_compte_djamo
+    examples: |
+      - Tarifs du compte djamo
+      - Les frais du compte djamo
+      - Agios du compte djamo
+      - Quels sont les agios du compte djamo?
+  ## new
+  - intent: faq/souscrire_au_plan_premium
+    examples: |
+      - Souscrire au plan premium ?
+      - Passer en premium
+      - Devenir premium
+      - être premium
+      - 
+      - 
+      - 
+      -
+
+  - intent: faq/plafonds_de_la_carte
+    examples: |
+      - Quel est le plafonds de la carte
+      - plafonds de la carte
+      - Quel est la somme maximum que la carte peut avoir
+      - Solde maximum
+      - Combien peut contenir la carte
+
+  # Payer et se faire payer
+  - intent: faq/ajouter_sa_carte_sur_google_pay
+    examples: |
+      - Comment ajouter sa carte sur Google Pay?
+      - Je veux ajouter ma carte sur Google Pay
+      - Ajouter ma carte sur Google Pay
+      - utiliser google pay
+
+  - intent: faq/ajouter_sa_carte_sur_play_store
+    examples: |
+      - Ajouter sa carte sur Play Store
+      - Comment ajouter ma carte sur Play Store?
+      - Je veux ajouter ma carte sur Play Store
+      - utiliser play store avec ma carte
+
+  - intent: faq/ajouter_sa_carte_djamo_sur_apple_store
+    examples: |
+      - Ajouter sa carte Djamo sur Apple Store
+      - Ajouter ma carte sur Apple Store
+      - Utiliser ma carte Djamo sur Apple Store
+      - Utiliser Djamo sur Apple Store
+      - Utiliser Apple Store avec ma carte Djamo
+
+  - intent: faq/paiement_en_ligne_avec_la_carte
+    examples: |
+      - Comment faire un paiement en ligne avec la carte Djamo?
+      - Je veux fair un achat en ligne
+      - acheter un article en ligne
+      - achat en ligne
+      - payer un article en ligne
+      - comment payer quelque chose en ligne
+      - payer en ligne
+
+  - intent: faq/payer_avec_sa_carte_djamo_au_tpe
+    examples: |
+      - Payer avec sa carte Djamo au TPE
+      - payer au tpe avec djamo
+      - utiliser ma carte pour payer au tpe
+      - payer le tpe
+
+  - intent: faq/lier_ma_carte_djamo_a_paypal
+    examples: |
+      - Lier ma carte DJAMO à PayPal
+      - Connecter paypal et djamo
+      - Connecter mes cartes djamo et paypal
+      - Je veux lier ma carte djamo et ma carte paypal
+      - Je veux lier mon compte djamo et mon compte paypal
+      - faire la liaison entre mon compte djamo et mon compte paypal
+      -  faire la liaison entre ma carte djamo et ma carte paypal
+
+  - intent: faq/recevoir_de_argent_sur_djamo
+    examples: |
+      - Comment recevoir de l'argent sur Djamo?
+      - recevoir de l'argent sur Djamo
+      - quelqu'un peut m'envoyer de l'argent sur djamo
+      - recevoir de l'argent sur ma carte
+
+  - intent: faq/payer_avec_ma_carte_djamo
+    examples: |
+      - Payer avec ma carte DJAMO
+      - Payer avec ma DJAMO
+      - Comment faire un paiement avec ma carte DJAMO?
+      - Faire un paiement avec ma carte
+
+  - intent: faq/transférer_de_argent
+    examples: |
+      - Transférer de l'argent
+      - Comment transférer de l'argent?
+      - Transférer de l'argent à partir de mon compte
+      - Je veux envoyer de l'argent
+
+  - intent: faq/transférer_argent_entre_comptes_djamo
+    examples: |
+      - Transférer de l'argent entre comptes DJAMO
+      - Envoyer de l'argent sur un autre compte djamo

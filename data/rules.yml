@@ -1,13 +1,17 @@
 version: "3.1"
 
 rules:
+  - rule: Dire aurevoir à chaque fois que l'utilisateur dit au revoir
+    steps:
+      - intent: aurevoir
+      - action: utter_aurevoir
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Dire 'Je suis un bot' chaque fois que l'utilisateur demande
+    steps:
+      - intent: bot_challenge
+      - action: utter_bot_challenge
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - rule: respond to FAQs
+    steps:
+      - intent: faq
+      - action: utter_faq
