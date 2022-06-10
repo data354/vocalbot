@@ -11,6 +11,8 @@ nlu:
       - slt
       - lu
       - bjr
+      - comment ça va?
+      - comment allez vous?
 
   - intent: aurevoir
     examples: |
