@@ -23,7 +23,7 @@ def callback(indata, frames, time, status):
 
 def recording() -> str:
     """Record, save audio and return the audio file name"""
-    filename = f"./recording/record-{str(datetime.now().date())}-{time()}.wav"
+    filename = f"./recording/user-record-{str(datetime.now().now())}.wav"
     with contextlib.suppress(KeyboardInterrupt):
         # Make sure the file is opened before recording anything:
         with sf.SoundFile(

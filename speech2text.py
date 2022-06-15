@@ -13,7 +13,7 @@ asr = Wav2Vec2ForCTC.from_pretrained(model_name).to(device)
 processor = Wav2Vec2Processor.from_pretrained(model_name)
 
 
-def make_prediction(file: str) -> str:
+def prediction(file: str) -> str:
     speech_array, sampling_rate = librosa.load(file, sr=16000)
     features = processor(
         speech_array, sampling_rate=sampling_rate, padding=True, return_tensors="pt"
