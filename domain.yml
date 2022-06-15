@@ -1,102 +1,139 @@
-version: "3.0"
+version: '3.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - aurevoir
-  - affirm
-  - deny
-  - bot_challenge
-  - faq
+- greet
+- aurevoir
+- affirm
+- deny
+- bot_challenge
+- faq
+- ouvrir_un_compte
+- activation_de_mon_compte
+- delai_activation_de_mon_compte
+- ajouter_numero_rechargement_mobile_money
+- ajouter_numero_rechargement_mobile_money_etape
+- tarifs_du_compte
+- paiement_en_ligne_avec_la_carte
 responses:
   utter_greet:
-    - text: Bonjour !
+  - text: Bonjour !
   utter_cheer_up:
-    - text: Besoin d'aide?
+  - text: Besoin d'aide?
   utter_did_that_help:
-    - text: Commment puis-je vous aider?
+  - text: Commment puis-je vous aider?
   utter_aurevoir:
-    - text: À bientôt
-    - text: Au revoir
-    - text: À plus
-    - text: Bye
+  - text: À bientôt
+  - text: Au revoir
+  - text: À plus
+  - text: Bye
   utter_bot_challenge:
-    - text: Je suis Djamo bot, mon role est de vous aidez pour l'utilisation des services de Djamo.
+  - text: Je suis Djamo bot, mon role est de vous aidez pour l'utilisation des services de Djamo.
+  utter_ouvrir_un_compte:
+  - text: L'**ouverture de compte DJAMO** est possible seulement Via l'**Application mobile DJAMO** disponible sur le Play Store et l'Apple Store.
+  utter_ouvrir_un_compte_etape_1:
+  - text: "Étape 1: Téléchargez l'application et vérifiez votre identité en prenant une photo de la pièce d'identité ainsi qu'un selfie."
+  utter_ouvrir_un_compte_etape_2:
+  - text: 'Étape 2: Commandez votre carte et faites vous livrer gratuitement partout à Abidjan.'
+  utter_ouvrir_un_compte_etape_3:
+  - text: "Étape 3: Activez votre carte dans l'application."
+  utter_activation_de_mon_compte:
+  - text: L'activation de votre compte survient seulement après avoir relié votre carte à votre compte DJAMO.
+  utter_activation_de_mon_compte_procedure:
+  - text: Pour cela, vous devez entrer l'identification client à 10 chiffres inscrit sur le dos de la carte, l'activation est alors instantanée.
+  utter_activation_de_mon_compte_procedure_etape_1:
+  - image: https://drive.google.com/file/d/1V1QCpKNoCjfiOF1jtiVd6cMAXDLP2xOA/view?usp=sharing
+    text: Etape 1
+  utter_activation_de_mon_compte_procedure_etape_2:
+  - image: https://drive.google.com/file/d/1Uu0g8aWOkxb_uOqmYsR-pPKQZELE-kzy/view?usp=sharing
+    text: Etape 2
+  utter_activation_de_mon_compte_procedure_etape_3:
+  - image: https://drive.google.com/file/d/16JAnRR44c-IkGAzvENHbrdNOlfkYsN9m/view?usp=sharing
+    text: |-
+      Etape 3 
+      Pour effectuer le virement, veuillez copier ce RIB que vous allez renseigner sur la plateforme de votre banque. Si vous finissez le virement, faites la capture de la preuve du virement et revenez dans l'application Djamo afin de renseigner le montant effectué.
+  utter_activation_de_mon_compte_procedure_etape_4:
+  - image: https://drive.google.com/file/d/1GdU-pgrt4K59Oy8c5AA5WkYIjwiT2YmO/view?usp=sharing
+    text: Etape 4
+  utter_activation_de_mon_compte_procedure_etape_5:
+  - image: https://drive.google.com/file/d/1AzW82FhHWyR2waM_zWKmu-G_CxX2l0qN/view?usp=sharing
+    text: Etape 5
+  utter_activation_de_mon_compte_procedure_etape_6:
+  - image: https://drive.google.com/file/d/1CR90rsUoHiuuORkm5aCQVkgxWS2625N0/view?usp=sharing
+    text: Etape 6
   utter_faq/apropos_de_djamo:
-    - text: Djamo est la première fintech d'Afrique francophone. Nous bâtissons la première super application financière de l'Afrique de l'Ouest avec des solutions simples, sécurisées et 100% numériques afin que vous puissiez avoir le contrôle de votre argent, depuis votre téléphone mobile.
-  utter_faq/commencer_ouvrir_un_compte_djamo:
-    - text: |-
-        L'**ouverture de compte DJAMO** est possible seulement Via l'**Application mobile DJAMO** disponible sur le Play Store et l'Apple Store.
-        1. Téléchargez l'application et vérifiez votre identité en prenant une photo de la pièce d'identité ainsi qu'un selfie. 2. Commandez votre carte et faites vous livrer gratuitement partout à Abidjan. 3. Activez votre carte dans l'application.
+  - text: Djamo est la première fintech d'Afrique francophone. Nous bâtissons la première super application financière de l'Afrique de l'Ouest avec des solutions simples, sécurisées et 100% numériques afin que vous puissiez avoir le contrôle de votre argent, depuis votre téléphone mobile.
   utter_faq/reception_de_la_carte:
-    - text: |-
-        Lors de la commande de votre carte, vous devez sélectionner zone de livraison ou de collecte.
-        Vous recevrez le jour de la livraison, un code à 4 chiffres que vous devrez communiquer à l'agent au moment de la réception de votre carte, vous devez également lui fournir le document original que vous aurez soumis durant l'inscription. Si vous n'avez pas reçu de code, vous pourrez demander à l'agent de livraison de vous le renvoyer.
+  - text: |-
+      Lors de la commande de votre carte, vous devez sélectionner zone de livraison ou de collecte.
+      Vous recevrez le jour de la livraison, un code à 4 chiffres que vous devrez communiquer à l'agent au moment de la réception de votre carte, vous devez également lui fournir le document original que vous aurez soumis durant l'inscription. Si vous n'avez pas reçu de code, vous pourrez demander à l'agent de livraison de vous le renvoyer.
   utter_faq/creer_mon_code_de_securite_djamo:
-    - text: "Votre code d'accès DJAMO est le code à 5 chiffres permettant de sécuriser l'accès à votre compte. Après avoir vérifier votre numéro de téléphone, on vous demandera de choisir un code d'accès à 5 chiffres pour accéder en toute sécurité à votre compte DJAMO, vous pourrez également activer la reconnaissance biométrique pour accéder plus rapidement et de manière plus sécurisée à votre compte les fois suivantes. Quelques conseils pratiques de sécurité: N'écrivez nul part votre mot de passe N'utilisez pas de mot de passe trop simple comme votre date de naissance Modifiez-le régulièrement."
+  - text: "Votre code d'accès DJAMO est le code à 5 chiffres permettant de sécuriser l'accès à votre compte. Après avoir vérifier votre numéro de téléphone, on vous demandera de choisir un code d'accès à 5 chiffres pour accéder en toute sécurité à votre compte DJAMO, vous pourrez également activer la reconnaissance biométrique pour accéder plus rapidement et de manière plus sécurisée à votre compte les fois suivantes. Quelques conseils pratiques de sécurité: N'écrivez nul part votre mot de passe N'utilisez pas de mot de passe trop simple comme votre date de naissance Modifiez-le régulièrement."
   utter_faq/confirmer_mon_adresse_email:
-    - text: La procédure de vérification est simple. Cliquez sur le lien contenu dans l'e-mail que nous vous avons envoyé. Si tout se passe bien, la vérification sera instantanée. Pensez à consulter votre dossier Courrier indésirable si vous ne recevez pas l'e-mail. Nous avons besoin d'une adresse mail vérifiée pour pouvoir vous envoyer des e-mails sensibles et importants (par exemple, pour la récupération du compte), qui peut se révéler utile lorsque vous n'avez pas accès aux SMS.
-  utter_faq/delai_activation_de_mon_compte_djamo:
-    - text: |-
-        L'activation de votre compte survient seulement après avoir relié votre carte à votre compte DJAMO.
-        Pour cela, vous devez entrer l'identification client à 10 chiffres inscrit sur le dos de la carte, l'activation est alors instantanée. Etape 1 https://drive.google.com/file/d/1V1QCpKNoCjfiOF1jtiVd6cMAXDLP2xOA/view?usp=sharing Etape 2 https://drive.google.com/file/d/1Uu0g8aWOkxb_uOqmYsR-pPKQZELE-kzy/view?usp=sharing Etape 3 Pour effectuer le virement, veuillez copier ce RIB que vous allez renseigner sur la plateforme de votre banque. Si vous finissez le virement, faites la capture de la preuve du virement et revenez dans l'application Djamo afin de renseigner le montant effectué. https://drive.google.com/file/d/16JAnRR44c-IkGAzvENHbrdNOlfkYsN9m/view?usp=sharing Etape 4 https://drive.google.com/file/d/1GdU-pgrt4K59Oy8c5AA5WkYIjwiT2YmO/view?usp=sharing Etape 5 https://drive.google.com/file/d/1AzW82FhHWyR2waM_zWKmu-G_CxX2l0qN/view?usp=sharing Etape 6 https://drive.google.com/file/d/1CR90rsUoHiuuORkm5aCQVkgxWS2625N0/view?usp=sharing
-  utter_faq/ajouter_numero_rechargement_mobile_money:
-    - text: |-
-        En principe, vous pouvez vous recharger à partir du numéro lié à votre compte si celui-ci est mobile money. Dans le cas contraire, pour ajouter un numéro de rechargement autre que le numéro de téléphone lié à votre compte, procédez comme suit :
-        1. Cliquez sur **Déposer de l'argent** 2. Choisissez l'opérateur du numéro de téléphone à ajouter 3. Cliquez sur **Ajouter un numéro de rechargement différent du mien**
-        Après avoir ajouté le numéro de téléphone, vous ne pourrez le changer que dans 15 jours pour des raisons de sécurité
-  utter_faq/tarifs_du_compte_djamo:
-    - text: DJAMO est **beaucoup moins cher** qu'un compte bancaire ordinaire. Pour connaître les tarifs d'utilisation de votre compte et carte DJAMO, rendez vous sur notre site dans la section tarifs, On vous explique comment ça marche, en **toute transparence** et sans **frais cachés**. Avec Djamo vous avez le choix entre différents plans tarifaires selon vos besoins, le plan FREE est le parfait plan pour commencer, il est complètement gratuit jusqu'à une certaine limite d'usage.
+  - text: La procédure de vérification est simple. Cliquez sur le lien contenu dans l'e-mail que nous vous avons envoyé. Si tout se passe bien, la vérification sera instantanée. Pensez à consulter votre dossier Courrier indésirable si vous ne recevez pas l'e-mail. Nous avons besoin d'une adresse mail vérifiée pour pouvoir vous envoyer des e-mails sensibles et importants (par exemple, pour la récupération du compte), qui peut se révéler utile lorsque vous n'avez pas accès aux SMS.
+  utter_ajouter_numero_rechargement_mobile_money:
+  - text: 'En principe, vous pouvez vous recharger à partir du numéro lié à votre compte si celui-ci est mobile money. Dans le cas contraire, pour ajouter un numéro de rechargement autre que le numéro de téléphone lié à votre compte, procédez comme suit :'
+  utter_ajouter_numero_rechargement_mobile_money_etape:
+  - text: |-
+      1. Cliquez sur **Déposer de l'argent** \n2. Choisissez l'opérateur du numéro de téléphone à ajouter \n3. Cliquez sur **Ajouter un numéro de rechargement différent du mien**
+      \nNB: Après avoir ajouté le numéro de téléphone, vous ne pourrez le changer que dans 15 jours pour des raisons de sécurité
+  utter_tarifs_du_compte:
+  - text: DJAMO est **beaucoup moins cher** qu'un compte bancaire ordinaire. La tarification est presentée en **toute transparence** et sans **frais cachés**. Avec Djamo vous avez le choix entre différents plans tarifaires selon vos besoins, le plan **FREE** est le parfait plan pour commencer et le plan **PREMIUM** sans limites.
+  utter_tarifs_du_compte_free:
+  - image: https://drive.google.com/file/d/1BngnRJKfGSoCHoLdewg9BhQ0bf7O9MzP/view?usp=sharing
+    text: Le plan **FREE** est le parfait plan pour commencer, il est complètement gratuit jusqu'à une certaine limite d'usage.
+  utter_tarifs_du_compte_Premium:
+  - image: https://drive.google.com/file/d/1xS6NNhnPLe9GW-0fQaN3hLW0pKCwwXEV/view?usp=sharing
+    text: Le plan **PREMIUM** est le parfait plan sans limites, il est à 2.000 FCFA par mois.
   utter_faq/souscrire_au_plan_premium:
-    - text: Vous pouvez commander votre **carte avec le plan PREMIUM** depuis l'**Appli DJAMO** lors de votre inscription en ligne, **la livraison est gratuite et le premier mois est offert**. Si vous avez déjà la carte avec le plan FREE, vous pouvez souscrire au plan **PREMIUM** directement depuis la section **Cartes** accessible depuis le menu du bas de votre Application mobile, vous n'aurez pas besoin de changer votre carte. Votre plan **PREMIUM** s'active automatiquement avec les **avantages** qui y sont liés. Le changement de plan coûte 2000 Fcfa !
+  - text: Vous pouvez commander votre **carte avec le plan PREMIUM** depuis l'**Appli DJAMO** lors de votre inscription en ligne, **la livraison est gratuite et le premier mois est offert**. \nSi vous avez déjà la carte avec le plan FREE, vous pouvez souscrire au plan **PREMIUM** directement depuis la section **Cartes** accessible depuis le menu du bas de votre Application mobile, vous n'aurez pas besoin de changer votre carte. Votre plan **PREMIUM** s'active automatiquement avec les **avantages** qui y sont liés. Le changement de plan coûte 2000 Fcfa !
   utter_faq/plafonds_de_la_carte:
-    - image: “https://drive.google.com/file/d/1iuSmFpmjrz76Cmhiqodp0RtS52tImrvR/view?usp=sharing”
-      text: “DJAMO est **Les plafonds des cartes DJAMO sont détaillés dans le tableau suivant, ces plafonds sont susceptibles de modification conformément à la réglementation imposée par la BCEAO.”
+  - image: “https://drive.google.com/file/d/1iuSmFpmjrz76Cmhiqodp0RtS52tImrvR/view?usp=sharing”
+    text: “DJAMO est **Les plafonds des cartes DJAMO sont détaillés dans le tableau suivant, ces plafonds sont susceptibles de modification conformément à la réglementation imposée par la BCEAO.”
   utter_faq/ajouter_sa_carte_sur_google_pay:
-    - text: |-
-        Pour faire un paiement en ligne (réserver un voyage, acheter un repas, faire du shopping...), acheter en magasin, faire des paiements sans contact (si votre téléphone possède cette option), payer sur Play Store, envoyer de l'argent à des amis (l'envoi d'argent n'est pas disponible en Côte d'Ivoire) et bien plus encore vous pouvez ajouter simplement une carte sur Google Pay.
-        Attention: Avant d'ajouter votre carte Djamo sur Google Pay, vous devez absolument déposer sur votre compte un montant supérieur à 2000 F CFA
-        Rendez-vous ici https://support.djamo.ci/fr/articles/6138380-ajouter-sa-carte-sur-google-pay pour plus de detail.
+  - text: "Pour faire un paiement en ligne (réserver un voyage, acheter un repas, faire du shopping...), acheter en magasin, faire des paiements sans contact (si votre téléphone possède cette option), payer sur Play Store, envoyer de l'argent à des amis (l'envoi d'argent n'est pas disponible en Côte d'Ivoire) et bien plus encore vous pouvez ajouter simplement une carte sur Google Pay. Attention: Avant d'ajouter votre carte Djamo sur Google Pay, vous devez absolument déposer sur votre compte un montant supérieur à 2000 F CFA Rendez-vous ici https://support.djamo.ci/fr/articles/6138380-ajouter-sa-carte-sur-google-pay pour plus de detail."
   utter_faq/ajouter_sa_carte_sur_play_store:
-    - text: Ouvrez l'application Google Play Store à partir de votre mobile Android. Ensuite, vous cliquez sur le menu à gauche de votre écran. Une liste déroulante apparaitra, vous choisissez l'option ''Modes de paiement''. Après avoir cliqué sur cette option, vous verrez ''Ajouter une carte de crédit ou de débit''. Une page s'affichera où vous allez saisir les informations personnelles de votre carte. Pour plus de detail cliquez ici https://support.djamo.ci/fr/articles/6138309-ajouter-sa-carte-sur-play-store
+  - text: Ouvrez l'application Google Play Store à partir de votre mobile Android. Ensuite, vous cliquez sur le menu à gauche de votre écran. Une liste déroulante apparaitra, vous choisissez l'option ''Modes de paiement''. Après avoir cliqué sur cette option, vous verrez ''Ajouter une carte de crédit ou de débit''. Une page s'affichera où vous allez saisir les informations personnelles de votre carte. Pour plus de detail cliquez ici https://support.djamo.ci/fr/articles/6138309-ajouter-sa-carte-sur-play-store
   utter_faq/ajouter_sa_carte_djamo_sur_apple_store:
-    - text: |-
-        Pour effectuer vos achats aisément sur **Apple Store** avec votre **carte Djamo**, vous devez au préalable changer la région/pays de votre compte. Si vous avez choisi **France**, vous devez changer pour **Côte d'Ivoire**.
-        Procéder comme suit: Sur votre iPhone, iPad ou iPod touch, - Ouvrez l'application Réglages. - Touchez votre nom, puis touchez iTunes Store et App Store. - Sélectionnez votre identifiant Apple, puis touchez Afficher l'identifiant Apple. - Cliquez sur contenus Multimédia et achats - Touchez Pays/Région puis Modifier le pays/la région ». Pour plus de detail cliquez ici https://support.djamo.ci/fr/articles/4679491-ajouter-sa-carte-djamo-sur-apple-store..
-  utter_faq/paiement_en_ligne_avec_la_carte:
-    - image: https://drive.google.com/file/d/1NoTjnFMxnB1HeafjAj83lyxS9VBdkcpD/view?usp=sharing
-      text: |-
-        Pour faire un paiement en ligne avec votre carte Djamo, c'est simple ! Procédez comme suit :
-        Lorsque vous vous rendez sur un site, il vous est demandé de remplir un formulaire. Vous devrez alors fournir les informations suivantes :
-        **Pour la carte virtuelle** - Votre nom et prénom - Le numéro de la carte - La date d'expiration de la carte, - Le code de sécurité de 3 chiffres Pour voir les informations de votre carte virtuelle via l'application, cliquez sur l'onglet Cartes puis sur voir les détails. L'image ci-dessous illustre cette action.
-        **Pour la carte physique** - Votre nom et prénom tels qu'inscrit dans le menu de gauche de votre application Djamo - Le numéro de la carte qui se trouve à l'avant de la carte, - La date d'expiration de la carte situé également sur la face avant de la carte - Le code de sécurité de 3 chiffres situés à l'arrière de la carte
+  - text: |-
+      Pour effectuer vos achats aisément sur **Apple Store** avec votre **carte Djamo**, vous devez au préalable changer la région/pays de votre compte. Si vous avez choisi **France**, vous devez changer pour **Côte d'Ivoire**.
+      Procéder comme suit: Sur votre iPhone, iPad ou iPod touch, - Ouvrez l'application Réglages. - Touchez votre nom, puis touchez iTunes Store et App Store. - Sélectionnez votre identifiant Apple, puis touchez Afficher l'identifiant Apple. - Cliquez sur contenus Multimédia et achats - Touchez Pays/Région puis Modifier le pays/la région ». Pour plus de detail cliquez ici https://support.djamo.ci/fr/articles/4679491-ajouter-sa-carte-djamo-sur-apple-store..
+  utter_paiement_en_ligne_avec_la_carte:
+  - text: |-
+      Pour faire un paiement en ligne avec votre carte Djamo, c'est simple ! Procédez comme suit :
+      Lorsque vous vous rendez sur un site, il vous est demandé de remplir un formulaire. Vous devrez alors fournir les informations suivantes :
+  utter_paiement_en_ligne_avec_la_carte_virtuelle:
+  - image: https://drive.google.com/file/d/1NoTjnFMxnB1HeafjAj83lyxS9VBdkcpD/view?usp=sharing
+    text: "**Pour la carte virtuelle** - Votre nom et prénom - Le numéro de la carte - La date d'expiration de la carte, - Le code de sécurité de 3 chiffres Pour voir les informations de votre carte virtuelle via l'application, cliquez sur l'onglet Cartes puis sur voir les détails. L'image ci-dessous illustre cette action."
+  utter_paiement_en_ligne_avec_la_carte_physique:
+  - text: "**Pour la carte physique** - Votre nom et prénom tels qu'inscrit dans le menu de gauche de votre application Djamo - Le numéro de la carte qui se trouve à l'avant de la carte, - La date d'expiration de la carte situé également sur la face avant de la carte - Le code de sécurité de 3 chiffres situés à l'arrière de la carte"
   utter_faq/payer_avec_sa_carte_djamo_au_tpe:
-    - text: |-
-        Lorsque vous vous rendez dans un commerce, et que vous finissez vos achats, au moment de payer, vous devez suivre ces étapes : - Vous introduisez votre carte Djamo dans la fente destinée à la lecture de la puce. - L'agent de caisse saisit le montant de la transaction au moyen du clavier du TPE. - Il vous remet l'appareil pour que entriez votre code PIN (Le code PIN pour les paiements via TPE est le même utilisé pour les retraits au guichet automatique. Il est situé sur le filtre collé à la feuille de papier contenant votre carte). - L'appareil imprime un reçu en double exemplaire dont un vous sera remis comme preuve de paiement.
-        Les TPE les plus récents sont équipés de la technologie **sans contact appelée aussi NFC**, ceux-ci sont marqués d'un logo rappelant celui du wifi. Pour effectuer un paiement sans contact avec votre carte Djamo: - Le commerçant saisit le montant de la transaction. - Vous posez votre carte sur l'écran du terminal de paiement. - Un voyant s'allume, un bip retentit pour signaler que le paiement est validé, si vous voulez vous pouvez demander un reçu, sinon vous avez terminé.
+  - text: |-
+      Lorsque vous vous rendez dans un commerce, et que vous finissez vos achats, au moment de payer, vous devez suivre ces étapes : - Vous introduisez votre carte Djamo dans la fente destinée à la lecture de la puce. - L'agent de caisse saisit le montant de la transaction au moyen du clavier du TPE. - Il vous remet l'appareil pour que entriez votre code PIN (Le code PIN pour les paiements via TPE est le même utilisé pour les retraits au guichet automatique. Il est situé sur le filtre collé à la feuille de papier contenant votre carte). - L'appareil imprime un reçu en double exemplaire dont un vous sera remis comme preuve de paiement.
+      Les TPE les plus récents sont équipés de la technologie **sans contact appelée aussi NFC**, ceux-ci sont marqués d'un logo rappelant celui du wifi. Pour effectuer un paiement sans contact avec votre carte Djamo: - Le commerçant saisit le montant de la transaction. - Vous posez votre carte sur l'écran du terminal de paiement. - Un voyant s'allume, un bip retentit pour signaler que le paiement est validé, si vous voulez vous pouvez demander un reçu, sinon vous avez terminé.
   utter_faq/lier_ma_carte_djamo_a_paypal:
-    - text: |-
-        La carte Visa DJAMO est **acceptée par PayPal**, vous pouvez **enregistrer votre carte VISA DJAMO** sur votre **compte PayPal** et ainsi acheter sur des sites internet qui acceptent PayPal.
-        **Néanmoins, vous devez avoir un compte Paypal Business pour que l'opération soit une réussite**.
-        Paypal prélève près de 1000 FCFA pour vérifier votre carte, ce montant est remboursé par PayPal par la suite, assurez vous d'avoir au moins 2.000 FCFA sur votre carte Djamo avant de la lier à Paypal.
-        💡 **Veuillez noter que vous ne pouvez pas recharger votre carte DJAMO depuis un compte PayPal,**
-        Pour lier votre carte DJAMO à PayPal, il vous suffit de suivre les étapes suivantes : 1- Créez un compte PayPal (optionnel si vous avez déjà un compte) 2- Cliquez sur Enregistrer une carte bancaire 3- Entrez les données de votre carte DJAMO (numéro de carte, date d'expiration et cryptogramme)
+  - text: |-
+      La carte Visa DJAMO est **acceptée par PayPal**, vous pouvez **enregistrer votre carte VISA DJAMO** sur votre **compte PayPal** et ainsi acheter sur des sites internet qui acceptent PayPal.
+      **Néanmoins, vous devez avoir un compte Paypal Business pour que l'opération soit une réussite**.
+      Paypal prélève près de 1000 FCFA pour vérifier votre carte, ce montant est remboursé par PayPal par la suite, assurez vous d'avoir au moins 2.000 FCFA sur votre carte Djamo avant de la lier à Paypal.
+      💡 **Veuillez noter que vous ne pouvez pas recharger votre carte DJAMO depuis un compte PayPal,**
+      Pour lier votre carte DJAMO à PayPal, il vous suffit de suivre les étapes suivantes : 1- Créez un compte PayPal (optionnel si vous avez déjà un compte) 2- Cliquez sur Enregistrer une carte bancaire 3- Entrez les données de votre carte DJAMO (numéro de carte, date d'expiration et cryptogramme)
   utter_faq/recevoir_de_argent_sur_djamo:
-    - text: |-
-        Vous pouvez vous faire payer sur DJAMO de différentes manières :
-        **Recevoir un DJAMO** ⚡️
-        C'est instantané et sans frais, il vous suffit de demander de l'argent à un autre utilisateur DJAMO figurant dans votre liste de contacts.
+  - text: |-
+      Vous pouvez vous faire payer sur DJAMO de différentes manières :
+      **Recevoir un DJAMO** ⚡️
+      C'est instantané et sans frais, il vous suffit de demander de l'argent à un autre utilisateur DJAMO figurant dans votre liste de contacts.
   utter_faq/payer_avec_ma_carte_djamo:
-    - text: |-
-        Des paiements sécurisés partout dans le monde Votre carte VISA DJAMO vous permet de faire **vos achats d'une manière sécurisée** en **ligne** ou en **magasin** dans plus **200 pays** et plus de **32 millions de commerçants** à travers le monde, partout où la carte VISA est acceptée. **VISA** est le réseau de paiement le **plus étendu au niveau global**.
-        les frais varient selon la localisation et la devise devise du commerçant, vous pouvez consulter les tarifs dans la **section 'Carte' de l'application** DJAMO.
+  - text: |-
+      Des paiements sécurisés partout dans le monde Votre carte VISA DJAMO vous permet de faire **vos achats d'une manière sécurisée** en **ligne** ou en **magasin** dans plus **200 pays** et plus de **32 millions de commerçants** à travers le monde, partout où la carte VISA est acceptée. **VISA** est le réseau de paiement le **plus étendu au niveau global**.
+      les frais varient selon la localisation et la devise devise du commerçant, vous pouvez consulter les tarifs dans la **section 'Carte' de l'application** DJAMO.
   utter_faq/transférer_de_argent:
-    - text: |-
-        Vous pouvez **transférer de l'argent** vers n'**importe quel compte Mobile Money** (Orange Money, MTN Money, Moov Money Flooz) en Côte d'Ivoire et bientôt dans les autres pays de l'UEMOA.
-        Veuillez noter que le transfert depuis DJAMO vers des comptes Mobile Money en Côte d'Ivoire, est de **1,5% du montant** pour la carte FREE et sans frais pour la carte PREMIUM.
-  utter_faq/transférer_argent_entre_comptes_djamo:
-    - text: |-
-        **Faire un transfert vers DJAMO** est la meilleure fonctionnalité de l'Application. C'est **facile**, **rapide** et **gratuit** !
-        1- Appuyez sur « Envoyer de l'argent» depuis l'écran principal puis cliquez sur l''icône ''Djamo'' ensuite, sélectionnez le destinataire parmi vos contacts, vous pouvez aussi taper simplement un numéro de téléphone.
-        2- Indiquez le montant à envoyer, puis appuyez sur « Envoyer » et l'argent apparaitra sur son compte DJAMO en quelques secondes ⚡️
+  - text: |-
+      Vous pouvez **transférer de l'argent** vers n'**importe quel compte Mobile Money** (Orange Money, MTN Money, Moov Money Flooz) en Côte d'Ivoire et bientôt dans les autres pays de l'UEMOA.
+      Veuillez noter que le transfert depuis DJAMO vers des comptes Mobile Money en Côte d'Ivoire, est de **1,5% du montant** pour la carte FREE et sans frais pour la carte PREMIUM.
+  utter_faq/transferer_argent_entre_comptes_djamo:
+  - text: |-
+      **Faire un transfert vers DJAMO** est la meilleure fonctionnalité de l'Application. C'est **facile**, **rapide** et **gratuit** !
+      1- Appuyez sur « Envoyer de l'argent» depuis l'écran principal puis cliquez sur l''icône ''Djamo'' ensuite, sélectionnez le destinataire parmi vos contacts, vous pouvez aussi taper simplement un numéro de téléphone.
+      2- Indiquez le montant à envoyer, puis appuyez sur « Envoyer » et l'argent apparaitra sur son compte DJAMO en quelques secondes ⚡️

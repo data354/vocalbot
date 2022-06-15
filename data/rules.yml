@@ -15,3 +15,48 @@ rules:
     steps:
       - intent: faq
       - action: utter_faq
+
+  - rule: Ouivrir un compte
+    steps:
+      - intent: ouvrir_un_compte
+      - action: utter_ouvrir_un_compte
+      - action: utter_ouvrir_un_compte_etape_1
+      - action: utter_ouvrir_un_compte_etape_2
+      - action: utter_ouvrir_un_compte_etape_3
+
+  - rule: Activation de compte
+    steps:
+      - intent: activation_de_mon_compte
+      - action: utter_activation_de_mon_compte
+      - action: utter_activation_de_mon_compte_procedure
+      - action: utter_activation_de_mon_compte_procedure_etape_1
+      - action: utter_activation_de_mon_compte_procedure_etape_2
+      - action: utter_activation_de_mon_compte_procedure_etape_3
+      - action: utter_activation_de_mon_compte_procedure_etape_4
+      - action: utter_activation_de_mon_compte_procedure_etape_5
+      - action: utter_activation_de_mon_compte_procedure_etape_6
+
+  - rule: Delais d'activation de compte
+    steps:
+      - intent: delai_activation_de_mon_compte
+      - action: utter_activation_de_mon_compte
+
+  - rule: Ajouter numero rechargement mobile money
+    steps:
+      - intent: ajouter_numero_rechargement_mobile_money
+      - action: utter_ajouter_numero_rechargement_mobile_money
+      - action: utter_ajouter_numero_rechargement_mobile_money_etape
+
+  - rule: plans tarifaires
+    steps:
+      - intent: tarifs_du_compte
+      - action: utter_tarifs_du_compte
+      - action: utter_tarifs_du_compte_free
+      - action: utter_tarifs_du_compte_Premium
+
+  - rule: paiement en ligne
+    steps:
+      - intent: paiement_en_ligne_avec_la_carte
+      - action: utter_paiement_en_ligne_avec_la_carte
+      - action: utter_paiement_en_ligne_avec_la_carte_virtuelle
+      - action: utter_paiement_en_ligne_avec_la_carte_physique
