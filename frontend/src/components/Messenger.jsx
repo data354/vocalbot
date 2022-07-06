@@ -7,7 +7,12 @@ import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 import axios from "axios";
 
 const socket = io.connect("http://0.0.0.0:5005")
-const voiceApi = axios("localhost:8000")
+const voiceApi = axios.create({baseURL: "http://localhost:8000"})
+const get_time = () => {
+    const today = new Date();
+    // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    return today.getHours() + ":" + today.getMinutes(); // + ":" + today.getSeconds();
+}
 export default function Messenger(params) { 
     const scrollRef = useRef(); // for auto scrolling
     // conversations stock all conversations
@@ -30,12 +35,9 @@ export default function Messenger(params) {
     }
 
     socket.on("bot_uttered", (response) => {
-        const today = new Date();
-        // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        //const dateTime = date+' '+time;
+        
         setConversations(
-            [...conversations, {id: "bot_uttered", text: response.text, createdAt: time}]
+            [...conversations, {id: "bot_uttered", text: response.text, createdAt: get_time()}]
         )
     })
 
@@ -61,27 +63,32 @@ export default function Messenger(params) {
     }
     const pause = () => {setRecordState(RecordState.PAUSE)}
     const stop = () => {setRecordState(RecordState.STOP)}
-    const onStop = (data) => {
+    const onStop = async (data) => {
         setAudioData(data)
         setDisplayWave(false)
-        const today = new Date();
-        // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         setConversations(
-            [...conversations, {id: "user_uttered", audio: data, createdAt: time}]
+            [...conversations, {id: "user_uttered", audio: data, createdAt: get_time()}]
         )
-        
-        var formData = new FormData();
-        formData.append("audio", data.blob);
-        console.log(formData)
-        console.log(data)
-
-        // voiceApi.post("/sound/send", formData, {
-        //     headers: {
-        //         "Content-type": "multipart/form-data"
-        //     }
-        // })
     }
+
+    useEffect(() => {
+        var formData = new FormData();
+        if (audioData){
+            formData.append("audio", audioData.blob);
+        }
+        voiceApi.post("/audio/send", formData, {
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            }).then((bot_utter) => {
+                
+                setConversations(
+                    [...conversations, {id: "bot_uttered", text: bot_utter.data.bot_utter, createdAt: get_time()}]
+                )
+            }
+            )
+    }, [audioData]);
+
     const hidden = displayWave? null: "hidden"
     const show = displayWave? "hidden": null
     
