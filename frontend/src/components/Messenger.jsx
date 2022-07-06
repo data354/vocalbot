@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import {PaperAirplaneIcon} from "@heroicons/react/outline"
 import "../style/Messenger.css"
+import Message from "./Message";
 
 export default function Messenger(params) { 
     const scrollRef = useRef(); // for auto scrolling
@@ -38,7 +39,19 @@ export default function Messenger(params) {
         <div className="bg-gray-200 p-5 flex justify-center h-5/6">
             <div className="bg-gray-100 w-1/2 flex flex-col shadow-2xl rounded-xl">
                 <div id="output_message" className="rounded-t-2xl flex-1 overflow-y-scroll scroll-auto p-5">
-                   
+                    {
+                        conversations.map(
+                            (
+                                {id, text, createdAt}, index) => (
+                                    <div ref={scrollRef} key={`${id}-${index}`}>
+                                        <Message 
+                                            text={text}
+                                            createdAt={createdAt}
+                                            own={id==="user_uttered"} />
+                                    </div>
+                                )
+                            )
+                    }
                 </div>
                 <div className="flex p-3 bg-slate-500" >
                         <input
