@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import {PaperAirplaneIcon} from "@heroicons/react/outline"
 import "../style/Messenger.css"
 import Message from "./Message";
+import { io } from "socket.io-client";
+
+const socket = io.connect("http://0.0.0.0:5005")
 
 export default function Messenger(params) { 
     const scrollRef = useRef(); // for auto scrolling
@@ -21,7 +24,18 @@ export default function Messenger(params) {
             [...conversations, {id: "user_uttered", text: user_uttered, createdAt: time}]
         )
         document.getElementById("input_message").value = ""
+        socket.emit("user_uttered",{"message": user_uttered})
     }
+
+    socket.on("bot_uttered", (response) => {
+        const today = new Date();
+        // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //const dateTime = date+' '+time;
+        setConversations(
+            [...conversations, {id: "bot_uttered", text: response.text, createdAt: time}]
+        )
+    })
 
     useEffect(() => {
         // Auto scrolling 
@@ -33,8 +47,7 @@ export default function Messenger(params) {
             onSentMessage(event)
         }
     }
-
-       
+   
     return (       
         <div className="bg-gray-200 p-5 flex justify-center h-5/6">
             <div className="bg-gray-100 w-1/2 flex flex-col shadow-2xl rounded-xl">

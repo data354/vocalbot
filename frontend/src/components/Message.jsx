@@ -9,7 +9,7 @@ function Message({text, createdAt, own }) {
     return (
             <div className="message own">
                 <div className="messageTop">
-                    <p className="messageText"><ReactMarkdown>{text}</ReactMarkdown></p>
+                    <div className="messageText"><ReactMarkdown>{text}</ReactMarkdown></div>
                     <img
                     className="messageImg"
                     src={userLogo}
