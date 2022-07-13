@@ -1,14 +1,14 @@
-from fastapi import FastAPI, UploadFile, File
-from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
-import src.speech2text as stt
-import requests
-import gtts
-import io
 from time import time
-from typing import Dict, Union
+
+import gtts
+import requests
+from typing import Dict
+from fastapi import FastAPI, File
 from fastapi.staticfiles import StaticFiles
-from scipy.io.wavfile import read, write
+from fastapi.middleware.cors import CORSMiddleware
+
+import src.speech2text as stt
+import src.text2speech as tts
 
 
 app = FastAPI()
@@ -26,6 +26,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+RASA_URL = "http://localhost:5002/webhooks/rest/webhook"
+
 app.mount("/assets", StaticFiles(directory="src/assets"), name="assets")
 
 
@@ -34,35 +36,24 @@ async def speech_to_text(audio: bytes = File()) -> Dict[str, str]:
 
     message = stt.prediction(file=audio)
     print("user ->", message)
-    response = requests.post(
-        "http://localhost:5002/webhooks/rest/webhook", json={"message": message}
-    )
-    print("bot -> ", end=" ")
+    response = requests.post(RASA_URL, json={"message": message})
 
     tmp = "".join(r["text"] + " " for r in response.json())
     bot_response = tmp or "Pouvez-vous repeter s'il vous plait?"
-    audio_gen = gtts.gTTS(bot_response, lang="fr", tld="fr")
+    print("bot -> ", bot_response)
     filename = f"bot-gen-{time()}.mp3"
-    audio_gen.save(f"src/assets/recording/{filename}")
-    # # then, let's save it to a BytesIO object, which is a buffer for bytes object
-    # fp = io.BytesIO()
-    # audio_gen.write_to_fp(fp)
-    # audio_utter = fp.read()
-    # print(type(audio_utter))
-    # print(audio_utter)
+    tts.audio_generate(
+        bot_response.replace("*", ""), filename=f"src/assets/recording/{filename}"
+    )
     return {"bot_uttered": bot_response, "audio": filename}
 
 
 @app.post("/message/send")
-async def text(message: str = File()):
+async def text(message: str = File()) -> Dict[str, str]:
 
     print("user ->", message)
-    response = requests.post(
-        "http://localhost:5002/webhooks/rest/webhook", json={"message": message}
-    )
+    response = requests.post(RASA_URL, json={"message": message})
     print("bot -> ", end=" ")
-    bot_response = ""
-    for r in response.json():
-        bot_response += r["text"] + "\n\n"
-        print("*", bot_response)
+    bot_response = "".join(r["text"] + " " for r in response.json())
+    print("bot ->", bot_response)
     return {"bot_uttered": bot_response}
