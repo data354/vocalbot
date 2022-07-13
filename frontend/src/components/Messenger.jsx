@@ -5,9 +5,11 @@ import { useState, useEffect, useRef } from "react";
 import {PaperAirplaneIcon} from "@heroicons/react/outline"
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 import axios from "axios";
+import base_url from "../constant";
 
-const socket = io.connect("http://0.0.0.0:5005")
-const voiceApi = axios.create({baseURL: "http://localhost:8000"})
+// const socket = io.connect("http://0.0.0.0:5005")
+const voiceApi = axios.create({baseURL: base_url})
+// const rasaApi = axios.create({baseURL: "http://localhost:5002/webhooks/rest/webhook"})
 const get_time = () => {
     const today = new Date();
     // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -18,28 +20,29 @@ export default function Messenger(params) {
     // conversations stock all conversations
     // TODO: save persistence on disk
     const [conversations, setConversations] = useState([]);
+    const [userMessage, setUserMessage] = useState("");
     const onSentMessage = (event) => {
         // This function is actioned when user sent message
-        //
         event.stopPropagation()
         const today = new Date();
         // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         //const dateTime = date+' '+time;
-        const user_uttered = document.getElementById("input_message").value;
+        const message = document.getElementById("input_message").value;
         setConversations(
-            [...conversations, {id: "user_uttered", text: user_uttered, createdAt: time}]
+            [...conversations, {id: "user_uttered", text: message, createdAt: time}]
         )
         document.getElementById("input_message").value = ""
-       socket.emit("user_uttered",{"message": user_uttered})
+       //socket.emit("user_uttered",{"message": user_uttered})
+       setUserMessage(message)
     }
 
-    socket.on("bot_uttered", (response) => {
+    // socket.on("bot_uttered", (response) => {
         
-        setConversations(
-            [...conversations, {id: "bot_uttered", text: response.text, createdAt: get_time()}]
-        )
-    })
+    //     setConversations(
+    //         [...conversations, {id: "bot_uttered", text: response.text, createdAt: get_time()}]
+    //     )
+    // })
 
     useEffect(() => {
         // Auto scrolling 
@@ -63,13 +66,31 @@ export default function Messenger(params) {
     }
     const pause = () => {setRecordState(RecordState.PAUSE)}
     const stop = () => {setRecordState(RecordState.STOP)}
-    const onStop = async (data) => {
+    const onStop = (data) => {
         setAudioData(data)
         setDisplayWave(false)
         setConversations(
             [...conversations, {id: "user_uttered", audio: data, createdAt: get_time()}]
         )
     }
+
+    useEffect(() => {
+        let message = {message: userMessage}
+        voiceApi.post("/message/send", message, {
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            }).then((bot_uttered) => {
+                console.log("bot_uttered")
+                console.log(bot_uttered.data.bot_uttered)
+                setConversations(
+                    [...conversations, {id: "bot_uttered", text: bot_uttered.data.bot_uttered, createdAt: get_time()}]
+                )
+
+                
+            }
+            )
+    }, [userMessage]);
 
     useEffect(() => {
         var formData = new FormData();
@@ -81,9 +102,12 @@ export default function Messenger(params) {
                     "Content-type": "multipart/form-data"
                 }
             }).then((bot_utter) => {
+
+                console.log("audio gen", bot_utter.data);
+                console.log("end");
                 
                 setConversations(
-                    [...conversations, {id: "bot_uttered", text: bot_utter.data.bot_utter, createdAt: get_time()}]
+                    [...conversations, {id: "bot_uttered", text: bot_utter.data.bot_uttered, audio: bot_utter.data.audio, createdAt: get_time()}]
                 )
             }
             )

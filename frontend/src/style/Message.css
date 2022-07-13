@@ -26,7 +26,7 @@
   
   .messageBottom{
       font-size: 12px;
-      margin-top: 10px;
+      /* margin-top: 1px; */
   }
   
   .message.own{
