@@ -3,9 +3,9 @@
 This project consists of building an End-to-end vocal bot using rasa, fastapi and react.js.
 
 ## Prerequisites
-python == 3.8.x
-Node.js == v16.x
-npm == 8.11.0
+- python == 3.8.x
+- Node.js == v16.x
+- npm == 8.11.0
 
 
 ## Setup environments
