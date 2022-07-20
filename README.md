@@ -59,4 +59,4 @@ npm start
 
 ## How to use
 After launching the react server, go to localhost:3000 in your browser.
-Then, enjoy :sunglasses: !
+Then enjoy :sunglasses: !
